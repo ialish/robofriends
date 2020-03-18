@@ -3,4 +3,4 @@ export const REQUEST_ROBOTS = {
 	PENDING: 'PENDING',
 	SUCCESS: 'SUCCESS',
 	FAILED: 'FAILED'
-}
+};

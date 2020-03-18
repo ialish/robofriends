@@ -5,18 +5,21 @@ export const setSearchField = (text) => {
 	return {
 		type: CHANGE_SEARCH_FIELD,
 		payload: text
-	};
+	}
 }
 
-export const requestRobots = () => (dispatch) => {
-	dispatch({ type: REQUEST_ROBOTS.PENDING });
-	apiCall('https://jsonplaceholder.typicode.com/users')
-		.then((users) => dispatch({
-			type: REQUEST_ROBOTS.SUCCESS,
-			payload: users
-		}))
-		.catch((error) => dispatch({
-			type: REQUEST_ROBOTS.FAILED,
-			payload: error
-		}));
+export const requestRobots = () => {
+	return (dispatch) => {
+		dispatch({ type: REQUEST_ROBOTS.PENDING });
+		const url = 'https://jsonplaceholder.typicode.com/users';
+		return apiCall(url)
+			.then((users) => dispatch({
+				type: REQUEST_ROBOTS.SUCCESS,
+				payload: users
+			}))
+			.catch((error) => dispatch({
+				type: REQUEST_ROBOTS.FAILED,
+				payload: error
+			}));
+	}
 }
